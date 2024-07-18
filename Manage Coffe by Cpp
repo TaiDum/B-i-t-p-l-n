@@ -5,8 +5,10 @@
 #include <fstream>
 
 using namespace std;
-
+#define NAME "Group11"
+#define PASS "tainamduyquy"
 #define MAX 100
+
 
 class Dish {
 public:
@@ -17,14 +19,14 @@ public:
     Dish() : id(0), price(0.0) {
         strcpy(name, "");
     }
-    //Nhap mon
+    //Nhập Món
     void inputDish() {
-        cout << "Nhap ma mon: ";
+        cout << "Nhập Mã Món: ";
         cin >> id;
         cin.ignore();
-        cout << "Nhap ten mon: ";
+        cout << "Nhập Tên Món: ";
         cin.getline(name, sizeof(name));
-        cout << "Nhap gia mon: ";
+        cout << "Nhập Giá Món: ";
         cin >> price;
     }
     void displayDish() {
@@ -41,14 +43,14 @@ public:
     Staff() : id(0), slr(0.0) {
         strcpy(name, "");
     }
-    //them nhan vien
+    //Thêm Nhân Viên
     void inputStaff() {
-        cout << "Nhap ma nhan vien: ";
+        cout << "Nhập Mã Nhân Viên: ";
         cin >> id;
         cin.ignore();
-        cout << "Nhap ten nhan vien: ";
+        cout << "Nhập Tên Nhân Viênn: ";
         cin.getline(name, sizeof(name));
-        cout << "Nhap tien luong nhan vien: ";
+        cout << "Nhập Tiền Lương Nhân Viên: ";
         cin >> slr;
     }
 
@@ -56,138 +58,156 @@ public:
         cout << id << " " << name << " " << slr << endl;
     }
 };
-//Quan ly mon
+//Quản Lý Món
 class CafeManager {
     Dish menu[MAX];
     int number;
     Staff staff[MAX];
-    int nop; // number of people
+    int nop; // number of people - số nhân viên
 
 public:
     CafeManager() : number(0), nop(0) {}
-
+    
+    //Hiển Thị Quản Lý
     void showManage() {
-        cout << " -------------------------\n";
-        cout << "|   Quan ly quan ca phe   | \n";
-        cout << " -------------------------\n";
-        cout << "|    1. Quan ly menu      | \n";
-        cout << " -------------------------\n";
-        cout << "|    2. Quan ly nhan vien |\n";
-        cout << " -------------------------\n";
-        cout << "Chon mot chuc nang: ";
+    cout << " -------------------------" << endl;
+    cout << "| Đăng nhập với chức năng |" << endl;
+    cout << " -------------------------" << endl;
+    cout << "|  1. Quản Lý Menu        |" << endl;
+    cout << " -------------------------" << endl;
+    cout << "|  2. Quản Lý Nhân Sự     |" << endl;
+    cout << " -------------------------" << endl;
+    cout << "|  3. Quản Lý Doanh Thu   |" << endl;
+    cout << " -------------------------" << endl;
+    cout << "|  4. Đăng Xuất           |" << endl;
+    cout << " -------------------------" << endl;
+    cout << "Chọn chức năng: ";
     }
-    //Hien thi lua chon
+
+    //Hiện thị quản lý Menu
     void showManageMenu() {
         cout << " -------------------------\n";
-        cout << "|     Quan ly mon an      | \n";
+        cout << "|     Quản Lý Món Ăn      | \n";
         cout << " -------------------------\n";
-        cout << "|    1. Them mon moi      | \n";
+        cout << "|    1. Thêm Món Mới      | \n";
         cout << " -------------------------\n";
-        cout << "|    2. Sua mon           |\n";
+        cout << "|    2. Sửa Món           |\n";
         cout << " -------------------------\n";
-        cout << "|    3. Xoa mon           |\n";
+        cout << "|    3. Xoá Món           |\n";
         cout << " -------------------------\n";
-        cout << "|    4. Tim mon           |\n";
+        cout << "|    4. Tìm Món           |\n";
         cout << " -------------------------\n";
-        cout << "|    5. Sap xep mon       |\n";
+        cout << "|    5. Sắp Xếp Món       |\n";
         cout << " -------------------------\n";
-        cout << "|    6. Luu vao file      |\n";
+        cout << "|    6. Lưu Vào FILE      |\n";
         cout << " -------------------------\n";
-        cout << "|    7. Goi mon           |\n";
+        cout << "|    7. Quay Lại          |\n";
         cout << " -------------------------\n";
-        cout << "|    8. Quay lai          |\n";
-        cout << " -------------------------\n";
-        cout << "Chon mot chuc nang: ";
+        cout << "Chọn Một Chức Năng: ";
     }
-    //Hien thi lua chon
+    //Hiển thị quản lý nhân viên
     void showManageStaff() {
         cout << " -------------------------\n";
-        cout << "|     Quan ly nhan vien   | \n";
+        cout << "|     Quản Lý Nhân Viên   | \n";
         cout << " -------------------------\n";
-        cout << "|    1. Them nhan vien    | \n";
+        cout << "|    1. Thêm Nhân Viên   | \n";
         cout << " -------------------------\n";
-        cout << "|    2. Sua thong tin     |\n";
+        cout << "|    2. Sửa Thông Tin     |\n";
         cout << " -------------------------\n";
-        cout << "|    3. Xoa nhan vien     |\n";
+        cout << "|    3. Xoá Nhân Viên     |\n";
         cout << " -------------------------\n";
-        cout << "|    4. Tim nhan vien     |\n";
+        cout << "|    4. Tìm Nhân Viên     |\n";
         cout << " -------------------------\n";
-        cout << "|    5. Sap xep nhan vien |\n";
+        cout << "|    5. Sắp Xếp Nhân Viên |\n";
         cout << " -------------------------\n";
-        cout << "|    6. Luu danh sach     |\n";
+        cout << "|    6. Lưu Danh Sách     |\n";
         cout << " -------------------------\n";
-        cout << "|    7. Tinh tien luong   |\n";
+        cout << "|    7. Quay Lại         |\n";
         cout << " -------------------------\n";
-        cout << "|    8. Quay lai          |\n";
-        cout << " -------------------------\n";
-        cout << "Chon mot chuc nang: ";
+        cout << "Chọn Một Chức Năng: ";
     }
-    //Hien thi mon
+    //Quản lý doanh thu
+    void showManageRevenue() {
+        cout << " -------------------------\n";
+        cout << "|    Quản Lý Doanh Thu    |\n";
+        cout << " -------------------------\n";
+        cout << "|    1. Gọi Món           |\n";
+        cout << " -------------------------\n";
+        cout << "|    2. Tính Tiền Lương   |\n";
+        cout << " -------------------------\n";
+        cout << "|    3. Quay Lại         |\n";
+        cout << " -------------------------\n";
+        cout << "Chọn Một Chức Năng: ";
+    }
+    //Hiển Thị Món
     void showDish() {
         if (number == 0) {
-            cout << "Chua co mon!" << endl;
+            cout << "Chưa Có Món!" << endl;
             return;
         }
         for (int i = 0; i < number; i++) {
             menu[i].displayDish();
         }
     }
-    //Them mon
+    //Thêm món
     void addDish() {
         while (true) {
             int num;
-            cout << "Nhap so luong mon ban muon them vao: ";
+            cout << "Nhập Số Luợng Món Thêm Vào: ";
             cin >> num;
             if (number + num <= MAX) {
                 for (int i = 0; i < num; i++) {
                     Dish newDish;
-                    cout << "Nhap thong tin mon thu " << number + 1 << " : " << endl;
+                    cout << "Nhập Thong Tin Món Thứ " << number + 1 << " : " << endl;
                     newDish.inputDish();
                     menu[number] = newDish;
                     number++;
                 }
                 break;
             } else {
-                cout << "So luong them vao vuot qua muc cho phep. Vui long nhap lai" << endl;
+                cout << "Số Lượng Thêm Vào Quá Mức Cho Phép. Vui Lòng Nhập Lại" << endl;
             }
         }
     }
-    //Sua mon
+    //Sửa món
     void editDishId() {
         if (number != 0) {
             int id;
             int found = 0;
             while (!found) {
-                cout << "Nhap ma mon ban muon sua: ";
+                cout << "Nhập Mã Món Bạn Muốn Sửa: ";
                 cin >> id;
                 for (int i = 0; i < number; i++) {
                     if (menu[i].id == id) {
-                        cout << "Nhap ten moi: ";
                         cin.ignore();
+                        cout << "Món Tìm Thấy: \nMã=" << menu[i].id << "\nTên=" << menu[i].name << "\nGiá=" << menu[i].price << endl;
                         cin.getline(menu[i].name, sizeof(menu[i].name));
-                        cout << "Nhap gia moi: ";
+                        cout << "Nhập Giá Mới: ";
                         cin >> menu[i].price;
-                        cout << "Sua mon thanh cong." << endl;
+                        cout << "Sửa Món Thành Công." << endl;
                         found = 1;
                         break;
                     }
                 }
                 if (!found) {
-                    cout << "Khong tim thay mon ban muon sua. Vui long nhap lai." << endl;
+                    cout << "Không Tìm Thấy Món Bạn Muốn Sửa. Vui Lòng Nhập Lại! Muốn Thoát Nhập 0" << endl;
+                }
+                if(id==0){
+                    break;
                 }
             }
         } else {
-            cout << "Chua co mon vui long them mon" << endl;
+            cout << "Chưa Có Món. Vui Lòng Thêm Món!" << endl;
             addDish();
         }
     }
-    //Xoa mon
+    //Xoá món
     void deleteDishId() {
         if (number != 0) {
             int id;
             int found = 0;
             while (!found) {
-                cout << "Nhap ma mon ban muon xoa: ";
+                cout << "Nhập Mã Món Bạn Muốn Xoá: ";
                 cin >> id;
                 for (int i = 0; i < number; i++) {
                     if (menu[i].id == id) {
@@ -195,69 +215,78 @@ public:
                             menu[j] = menu[j + 1];
                         }
                         number--;
-                        cout << "Xoa mon thanh cong." << endl;
+                        cout << "Xoá Món Thành Công." << endl;
                         found = 1;
                         break;
                     }
                 }
                 if (!found) {
-                    cout << "Khong tim thay mon ban muon xoa. Vui long nhap lai." << endl;
+                    cout << "Không Tìm Thấy Món Bạn Muốn Sửa. Vui Lòng Nhập Lại! Muốn Thoát Nhập 0" << endl;
+                }
+                if(id==0){
+                    break;
                 }
             }
         } else {
-            cout << "Chua co mon vui long them mon" << endl;
+            cout << "Chưa Có Món. Vui Lòng Thêm Món!" << endl;
             addDish();
         }
     }
-    //Tim kiem mon theo id
+    //Tìm món theo mã
     void searchDishId() {
         if (number != 0) {
             int id;
             int found = 0;
             while (!found) {
-                cout << "Nhap ma mon ban muon tim: ";
+                cout << "Nhập Mã Món Bạn Muốn Tìm: ";
                 cin >> id;
                 for (int i = 0; i < number; i++) {
                     if (menu[i].id == id) {
-                        cout << "Mon tim thay: \nMa=" << menu[i].id << "\nTen=" << menu[i].name << "\nGia=" << menu[i].price << endl;
+                        cout << "Món Tìm Thấy: \nMã=" << menu[i].id << "\nTên=" << menu[i].name << "\nGiá=" << menu[i].price << endl;
                         found = 1;
                         return;
                     }
                 }
                 if (!found) {
-                    cout << "Khong tim thay mon ban can tim. Vui long nhap lai." << endl;
+                    cout << "Không Tìm Thấy Món Bạn Muốn Sửa. Vui Lòng Nhập Lại! Muốn Thoát Nhập 0" << endl;
+                }
+                if(id==0){
+                    break;
                 }
             }
         } else {
-            cout << "Chua co mon vui long nhap them mon." << endl;
+            cout << "Chưa Có Món. Vui Lòng Thêm Món!" << endl;
             addDish();
         }
     }
-    //Tim mon theo gia
+    //Tìm món theo giá
     void searchDishPrice() {
         if (number != 0) {
             double price;
             int found = 0;
             while (!found) {
-                cout << "Nhap gia mon ban muon tim: ";
+                cout << "Nhập Giá Món Bạn Muốn Tìm: ";
                 cin >> price;
                 for (int i = 0; i < number; i++) {
                     if (menu[i].price == price) {
-                        cout << "Mon tim thay: \nMa=" << menu[i].id << "\nTen=" << menu[i].name << "\nGia=" << menu[i].price << endl;
+                        cout << "Món Tìm Thấy: \nMã=" << menu[i].id << "\nTên=" << menu[i].name << "\nGiá=" << menu[i].price << endl;
                         found = 1;
                         return;
                     }
                 }
                 if (!found) {
-                    cout << "Khong tim thay mon ban can tim. Vui long nhap lai." << endl;
+                    cout << "Không Tìm Thấy Món Bạn Muốn Sửa. Vui Lòng Nhập Lại! Muốn Thoát Nhập 0" << endl;
+                }
+                if(price==0){
+                    break;
                 }
             }
         } else {
-            cout << "Chua co mon vui long nhap them mon." << endl;
+            cout << "Chưa Có Món. Vui Lòng Thêm Món!" << endl;
             addDish();
         }
     }
-    //Sap xep mon theo ma
+    //Sắp Xếp Món Theo Mã
     void sortDishId() {
         for (int i = 0; i < number - 1; i++) {
             for (int j = i + 1; j < number; j++) {
@@ -268,10 +297,10 @@ public:
                 }
             }
         }
-        cout << "Danh sach mon sau khi sap xep theo ma mon: " << endl;
+        cout << "Danh Sách Món Sau Khi Sắp Xếp Theo Mã: " << endl;
         showDish();
     }
-    //Sap xep mon theo gia
+    //Sắp Xếp Món Theo Giá
     void sortDishPrice() {
         for (int i = 0; i < number - 1; i++) {
             for (int j = i + 1; j < number; j++) {
@@ -282,106 +311,106 @@ public:
                 }
             }
         }
-        cout << "Danh sach mon sau khi sap xep theo gia mon: " << endl;
+        cout << "Danh Sách Món Sau Khi Sắp Xếp Theo Giá: " << endl;
         showDish();
     }
-    //Goi mon
+    //Gọi Món
     void orderDish() {
         if (number == 0) {
-            cout << "Danh sach mon trong." << endl;
+            cout << "Danh Sách Món Trống." << endl;
             return;
         }
         int id;
-        cout << "Nhap ma mon: ";
+        cout << "Nhập Mã Món: ";
         cin >> id;
         for (int i = 0; i < number; i++) {
             if (menu[i].id == id) {
-                cout << "Ban da chon mon: " << endl;
+                cout << "Bạn Đã Chọn Món: " << endl;
                 menu[i].displayDish();
                 return;
             }
         }
-        cout << "Khong tim thay mon voi ma nay!" << endl;
+        cout << "Không Tìm Thấy Món Với Mã Này!" << endl;
     }
-    //Viet vao file
-    void writeFile() {
-        ofstream fMenu("menu.txt");
+    //Lưu FILE
+    void saveToFileDish() {
+        ofstream fMenu("MenuCpp.txt");
         if (fMenu.is_open()) {
             for (int i = 0; i < number; i++) {
-                fMenu << menu[i].id << "|" << menu[i].name << "|" << menu[i].price << endl;
+                fMenu << menu[i].id << "\t" << menu[i].name << "\t" << menu[i].price << endl;
             }
             fMenu.close();
-            cout << "Ghi file thanh cong." << endl;
+            cout << "Lưu FILE Thành Công." << endl;
         } else {
-            cout << "Khong the mo file." << endl;
+            cout << "Không Thể Mở FILE." << endl;
         }
     }
-    //Hien thi nhan vien
+    //Hiển Thị Nhân Viên
     void showStaff() {
         if (nop == 0) {
-            cout << "Chua co nhan vien!" << endl;
+            cout << "Chưa Có Nhân Viên!" << endl;
             return;
         }
         for (int i = 0; i < nop; i++) {
             staff[i].displayStaff();
         }
     }
-    //Them nhan vien
+    //Thêm NV
     void addStaff() {
         while (true) {
             int num;
-            cout << "Nhap so luong nhan vien ban muon them vao: ";
+            cout << "Nhập Số Lượng Nhân Viên Bạn Muốn Thêm Vào: ";
             cin >> num;
             if (nop + num <= MAX) {
                 for (int i = 0; i < num; i++) {
                     Staff newStaff;
-                    cout << "Nhap thong tin nhan vien thu " << nop + 1 << " : " << endl;
+                    cout << "Nhập Thông Tin Nhân Viên Thứ " << nop + 1 << " : " << endl;
                     newStaff.inputStaff();
                     staff[nop] = newStaff;
                     nop++;
                 }
                 break;
             } else {
-                cout << "So luong them vao vuot qua muc cho phep. Vui long nhap lai" << endl;
+                cout << "Số Lượng Thêm Vào Quá Mức Cho Phép. Vui Lòng Nhập Lại!" << endl;
             }
         }
     }
-    //Sua thong tin nhan vien
+    //Sửa thông tin NV
     void editStaffId() {
         if (nop != 0) {
             int id;
             int found = 0;
             while (!found) {
-                cout << "Nhap ma nhan vien ban muon sua: ";
+                cout << "Nhập Mã Nhân Viên Muốn Sửa: ";
                 cin >> id;
                 for (int i = 0; i < nop; i++) {
                     if (staff[i].id == id) {
-                        cout << "Nhap ten moi: ";
+                        cout << "Nhập Tên Mới: ";
                         cin.ignore();
                         cin.getline(staff[i].name, sizeof(staff[i].name));
-                        cout << "Nhap luong moi: ";
+                        cout << "Nhập Lương Mới: ";
                         cin >> staff[i].slr;
-                        cout << "Sua thong tin nhan vien thanh cong." << endl;
+                        cout << "Sửa Thông Tin Nhân Viên Thành Công." << endl;
                         found = 1;
                         break;
                     }
                 }
                 if (!found) {
-                    cout << "Khong tim thay nhan vien ban muon sua. Vui long nhap lai." << endl;
+                    cout << "Không Tìm Thấy Nhân Viên.Nhập Lại! " << endl;
                 }
             }
         } else {
-            cout << "Chua co nhan vien vui long them nhan vien" << endl;
+            cout << "Chưa Có Nhân Viên. Vui Lòng Thêm!" << endl;
             addStaff();
         }
     }
-    //Xoa thong tin nhan vien
+    //Xoá NV
     void deleteStaffId() {
         if (nop != 0) {
             int id;
             int found = 0;
             while (!found) {
-                cout << "Nhap ma nhan vien ban muon xoa: ";
+                cout << "Nhập Mã Nhân Viên Muốn Xoá: ";
                 cin >> id;
                 for (int i = 0; i < nop; i++) {
                     if (staff[i].id == id) {
@@ -389,41 +418,41 @@ public:
                             staff[j] = staff[j + 1];
                         }
                         nop--;
-                        cout << "Xoa nhan vien thanh cong." << endl;
+                        cout << "Xoá Nhân Viên Thành Công." << endl;
                         found = 1;
                         break;
                     }
                 }
                 if (!found) {
-                    cout << "Khong tim thay nhan vien ban muon xoa. Vui long nhap lai." << endl;
+                    cout << "Không Tìm Thấy Nhân Viên Bạn Muốn Xoá. Vui Lòng Nhập Lại." << endl;
                 }
             }
         } else {
-            cout << "Chua co nhan vien vui long them nhan vien" << endl;
+            cout << "Chưa Có Nhân Viên. Hãy Thêm!" << endl;
             addStaff();
         }
     }
-    //Tim nhan vien theo ma
+    //Tìm Nhân Viên Theo Mã
     void searchStaffId() {
         if (nop != 0) {
             int id;
             int found = 0;
             while (!found) {
-                cout << "Nhap ma nhan vien ban muon tim: ";
+                cout << "Nhập Mã Nhân Viên Muốn Tìm: ";
                 cin >> id;
                 for (int i = 0; i < nop; i++) {
                     if (staff[i].id == id) {
-                        cout << "Nhan vien tim thay: \nMa=" << staff[i].id << "\nTen=" << staff[i].name << "\nLuong=" << staff[i].slr << endl;
+                        cout << "Nhân Viên Tìm Thấy: \nMã=" << staff[i].id << "\nTên=" << staff[i].name << "\nLương=" << staff[i].slr << endl;
                         found = 1;
                         return;
                     }
                 }
                 if (!found) {
-                    cout << "Khong tim thay nhan vien ban can tim. Vui long nhap lai." << endl;
+                    cout << "Không Tìm Thấy Nhân Viên Cần Tìm. Vui Lòng Nhập Lại." << endl;
                 }
             }
         } else {
-            cout << "Chua co nhan vien vui long nhap them nhan vien." << endl;
+            cout << "Chưa Có Nhân Viên. Hãy Thêm!" << endl;
             addStaff();
         }
     }
@@ -433,21 +462,21 @@ public:
             double slr;
             int found = 0;
             while (!found) {
-                cout << "Nhap luong nhan vien ban muon tim: ";
+                cout << "Nhập Lương Nhân Viên Muốn Tìm: ";
                 cin >> slr;
                 for (int i = 0; i < nop; i++) {
                     if (staff[i].slr == slr) {
-                        cout << "Nhan vien tim thay: \nMa=" << staff[i].id << "\nTen=" << staff[i].name << "\nLuong=" << staff[i].slr << endl;
+                        cout << "Nhân Viên Tìm Thấy: \nMã=" << staff[i].id << "\nTên=" << staff[i].name << "\nLương=" << staff[i].slr << endl;
                         found = 1;
                         return;
                     }
                 }
                 if (!found) {
-                    cout << "Khong tim thay nhan vien ban can tim. Vui long nhap lai." << endl;
+                    cout << "Không Tìm Thấy Nhân Viên Cần Tìm. Vui Lòng Nhập Lại." << endl;
                 }
             }
         } else {
-            cout << "Chua co nhan vien vui long nhap them nhan vien." << endl;
+            cout << "Chưa Có Nhân Viên. Hãy Thêm." << endl;
             addStaff();
         }
     }
@@ -462,7 +491,7 @@ public:
                 }
             }
         }
-        cout << "Danh sach nhan vien sau khi sap xep theo ma nhan vien: " << endl;
+        cout << "Danh Sách NV Sau Khi Sắp Xếp Theo Mã: " << endl;
         showStaff();
     }
     //Sap xep nhan vien theo tien luong
@@ -476,24 +505,24 @@ public:
                 }
             }
         }
-        cout << "Danh sach nhan vien sau khi sap xep theo luong nhan vien: " << endl;
+        cout << "Danh Sách NV Sau Khi Sắp Xếp Theo Lương: " << endl;
         showStaff();
     }
     //Luu danh sach nhan vien vao file
-    void writeFileStaff() {
-        ofstream fStaff("staff.txt");
+    void saveToFileStaff() {
+        ofstream fStaff("StaffCpp.txt");
         if (fStaff.is_open()) {
             for (int i = 0; i < nop; i++) {
                 fStaff << staff[i].id << "|" << staff[i].name << "|" << staff[i].slr << endl;
             }
             fStaff.close();
-            cout << "Ghi file thanh cong." << endl;
+            cout << "Lưu FILE Thành Công." << endl;
         } else {
-            cout << "Khong the mo file." << endl;
+            cout << "Không Thể Mở FILE." << endl;
         }
     }
     
-    // Ham tinh tien luong(7)
+    //Tính Lương
     void calculateSalaryById() {
     if (nop != 0) {
         int id;
@@ -501,123 +530,187 @@ public:
         double hoursWorked;
         double totalSalary;
 
-        cout << "Nhap ma nhan vien ban muon tinh luong: ";
+        cout << "Nhập Mã Nhân Viên Muốn Tính Lương: ";
         cin >> id;
 
         while (!found) {
             for (int i = 0; i < nop; i++) {
                 if (staff[i].id == id) {
-                    cout << "Nhap so gio lam viec cua nhan vien " << staff[i].name << ": ";
+                    cout << "Số Giờ Làm " << staff[i].name << ": ";
                     cin >> hoursWorked;
                     totalSalary = staff[i].slr * hoursWorked;
-                    cout << "Tong tien luong cua nhan vien " << staff[i].name << " (ID " << staff[i].id << ") la: " << fixed << setprecision(2) << totalSalary << endl;
+                    cout << "Tổng Tiền Lương Của Nhân Viên " << staff[i].name << " (ID " << staff[i].id << ") Là: " << fixed << setprecision(2) << totalSalary << endl;
                     found = true;
                     break;
                 }
             }
             if (!found) {
-                cout << "Khong tim thay nhan vien voi ma ID " << id << ". Vui long thu lai.\nNeu muon thoat nhap 0\n";
+                cout << "Không Tìm Thấy Nhân Viên Với Mã ID " << id << ". Vui Lòng Thử Lại.\n<Muốn Thoát Nhập> 0\n";
             }
             if (id == 0) {
                 break;
             }
         }
     } else {
-        cout << "Chua co nhan vien vui long them nhan vien.\n";
+        cout << "Chưa Có Nhân Viên. Hãy Thêm!.\n";
         addStaff();
     }
 }
 };
 
 int main() {
-    CafeManager manager;
-    int choice;
-
     while (true) {
-        system("clear");  
-        manager.showManage();
-        cin >> choice;
+        CafeManager manager;
+        int check=0;
+        do {
+            char TenDangNhap[50], MatKhau[50];
+            cout << "Nhập Tên Đăng Nhập: ";
+            cin.getline(TenDangNhap, sizeof(TenDangNhap));
+            cout << "Nhập Mật Khẩu: ";
+            cin.getline(MatKhau, sizeof(MatKhau));
 
-        switch (choice) {
-        case 1:
-            while (true) {
-                manager.showManageMenu();
-                int menuChoice;
-                cin >> menuChoice;
-                switch (menuChoice) {
-                case 1:
-                    manager.addDish();
-                    break;
-                case 2:
-                    manager.editDishId();
-                    break;
-                case 3:
-                    manager.deleteDishId();
-                    break;
-                case 4:
-                    manager.searchDishId();
-                    break;
-                case 5:
-                    manager.sortDishId();
-                    break;
-                case 6:
-                    manager.writeFile();
-                    break;
-                case 7:
-                    manager.orderDish();
-                    break;
-                case 8:
-                    break;
-                default:
-                    cout << "Lua chon khong hop le. Vui long chon lai." << endl;
-                    break;
-                }
-                if (menuChoice == 8) break;
+            if (strcmp(TenDangNhap, NAME) == 0 && strcmp(MatKhau, PASS) == 0) {
+                check = 1;
+            } else {
+                cout << "Tên Đăng Nhập Hoặc Mật Khẩu Không Đúng. Thử Lại!" << endl;
             }
-            break;
-        case 2:
-            while (true) {
-                manager.showManageStaff();
-                int staffChoice;
-                cin >> staffChoice;
-                switch (staffChoice) {
-                case 1:
-                    manager.addStaff();
-                    break;
-                case 2:
-                    manager.editStaffId();
-                    break;
-                case 3:
-                    manager.deleteStaffId();
-                    break;
-                case 4:
-                    manager.searchStaffId();
-                    break;
-                case 5:
-                    manager.sortStaffId();
-                    break;
-                case 6:
-                    manager.writeFileStaff();
-                    break;
-                case 7:
-                    manager.calculateSalaryById();
-                    break;
-                case 8:
-                    break;
-                default:
-                    cout << "Lua chon khong hop le. Vui long chon lai." << endl;
-                    break;
-                }
-                if (staffChoice == 8) break;
+        } while (!check);
+
+        int x, n, m, k;
+        int a, b;
+        do {
+            system("clear");
+            manager.showManage();
+            cin >> x;
+            cin.ignore();
+
+            if (x == 4) {
+                system("clear");
+                break;
             }
-            break;
-        case 3:
-            cout << "Cam on ban da su dung chuong trinh!" << endl;
-            return 0;
-        default:
-            cout << "Lua chon khong hop le. Vui long chon lai." << endl;
-            break;
-        }
+
+            switch (x) {
+                case 1:
+                    system("clear");
+                    do {
+                        manager.showManageMenu();
+                        cin >> n;
+                        cin.ignore();
+                        switch (n) {
+                            case 1:
+                                manager.addDish();
+                                break;
+                            case 2:
+                                manager.editDishId();
+                                break;
+                            case 3:
+                                manager.deleteDishId();
+                                break;
+                            case 4:
+                                cout << "1. Tìm Món Theo Mã\n2. Tìm Món Theo Giá\nNhập Lựa Chọn Của Bạn: ";
+                                cin >> b;
+                                cin.ignore();
+                                switch (b) {
+                                    case 1:
+                                        manager.searchDishId();
+                                        break;
+                                    case 2:
+                                        manager.searchDishPrice();
+                                        break;
+                                    default:
+                                        cout << "Lựa Chọn Không Hợp Lệ. Chọn Lại!\n";
+                                        break;
+                                }
+                                break;
+                            case 5:
+                                cout << "1. Sắp Xếp Món Theo Mã\n2. Sắp Xếp Món Theo Giá\nNhập Lựa Chọn Của Bạn: ";
+                                cin >> a;
+                                cin.ignore();
+                                switch (a) {
+                                    case 1:
+                                        manager.sortDishId();
+                                        break;
+                                    case 2:
+                                        manager.sortDishPrice();
+                                        break;
+                                    default:
+                                        cout << "Lựa chọn không hợp lệ\n";
+                                        break;
+                                }
+                                break;
+                            case 6:
+                                manager.saveToFileDish();
+                                break;
+                            case 7:
+                                break;
+                            default:
+                                cout << "Lựa Chọn Không Hợp Lệ. Chọn Lại!\n";
+                                break;
+                        }
+                    } while (n != 7);
+                    break;
+
+                case 2:
+                    system("clear");
+                    do {
+                        manager.showManageStaff();
+                        cin >> m;
+                        cin.ignore();
+                        switch (m) {
+                            case 1:
+                                manager.addStaff();
+                                break;
+                            case 2:
+                                manager.editStaffId();
+                                break;
+                            case 3:
+                                manager.deleteStaffId();
+                                break;
+                            case 4:
+                                manager.searchStaffId();
+                                break;
+                            case 5:
+                                manager.sortStaffId();
+                                break;
+                            case 6:
+                                manager.saveToFileStaff();
+                                break;
+                            case 7:
+                                break;
+                            default:
+                                cout << "Lựa Chọn Không Hợp Lệ. Chọn Lại!\n";
+                                break;
+                        }
+                    } while (m != 7);
+                    break;
+
+                case 3:
+                    system("clear");
+                    do {
+                        manager.showManageRevenue();
+                        cin >> k;
+                        cin.ignore();
+                        switch (k) {
+                            case 1:
+                                manager.orderDish();
+                                break;
+                            case 2:
+                                manager.calculateSalaryById();
+                                break;
+                            case 3:
+                                break; // Thoát
+                            default:
+                                cout << "Lựa Chọn Không Hợp Lệ. Chọn Lại!\n";
+                                break;
+                        }
+                    } while (k != 3);
+                    break;
+
+                default:
+                    cout << "Không có lựa chọn. Chọn lại!\n";
+                    break;
+            }
+        } while (1); 
     }
     return 0;
 }
