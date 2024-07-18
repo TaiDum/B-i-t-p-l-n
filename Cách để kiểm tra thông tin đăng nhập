@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h> // Để sử dụng hàm strlen
+
+#define NAME "Group11"
+#define PASS "tainamduyquy"
+
+int Check() {
+    char mk[50];
+    char ten[50];
+    int check;
+    do {
+        check = 0; // Đặt lại biến check
+        printf("Nhập tên đăng nhập: ");
+        fgets(ten, sizeof(ten), stdin);
+        ten[strcspn(ten, "\n")] = 0; // Loại bỏ ký tự newline
+
+        printf("Nhập mật khẩu: ");
+        fgets(mk, sizeof(mk), stdin);
+        mk[strcspn(mk, "\n")] = 0; // Loại bỏ ký tự newline
+
+        if (strcmp(ten, NAME) == 0 && strcmp(mk, PASS) == 0) {
+            check = 1;
+            printf("Ok\n");
+        } else {
+            printf("Not ok\n");
+        }
+    } while (!check); 
+
+}
+
