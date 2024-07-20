@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h> // Để sử dụng hàm strlen
+#include <string.h>
 
 #define NAME "Group11"
 #define PASS "tainamduyquy"
@@ -9,14 +9,14 @@ int Check() {
     char ten[50];
     int check;
     do {
-        check = 0; // Đặt lại biến check
+        check = 0; 
         printf("Nhập tên đăng nhập: ");
         fgets(ten, sizeof(ten), stdin);
-        ten[strcspn(ten, "\n")] = 0; // Loại bỏ ký tự newline
+        ten[strcspn(ten, "\n")] = 0; 
 
         printf("Nhập mật khẩu: ");
         fgets(mk, sizeof(mk), stdin);
-        mk[strcspn(mk, "\n")] = 0; // Loại bỏ ký tự newline
+        mk[strcspn(mk, "\n")] = 0; 
 
         if (strcmp(ten, NAME) == 0 && strcmp(mk, PASS) == 0) {
             check = 1;
