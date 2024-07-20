@@ -24,32 +24,3 @@ void saveToFileStaff() {
     fclose(file);
     printf("Luu du lieu thanh cong\n");
 }
-//Lưu menu
-void saveToFileDish() {
-    ofstream file("MenuCpp.txt");
-    if (!file.is_open()) {
-        cout << "Khong the luu vao file!" << endl;
-        return;
-    }
-    for (int i = 0; i < number; i++) {
-        file << menu[i].id << " " << menu[i].name << " " << menu[i].price << endl;
-    }
-    file.close();
-    cout << "Luu du lieu thanh cong" << endl;
-}
-//Lưu danh sách nhân viên
-void saveToFileStaff() {
-    FILE *file = fopen("StaffCpp.txt", "w");
-    if (file == NULL) {
-        cout << "Khong the luu vao file!" << endl;
-        return;
-    }
-    for (int i = 0; i < nop; i++) {
-        fprintf(file, "%d %s %.2lf\n", staff[i].id, staff[i].name, staff[i].slr);
-    }
-    fclose(file);
-    cout << "Luu du lieu thanh cong" << endl;
-}
-
-
-
